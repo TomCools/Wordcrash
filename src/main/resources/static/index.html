@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WordCrash</title>
+    <script src="/js/game-object.js"></script>
+    <script src="/js/word.js"></script>
+    <script src="/js/scoreboard.js"></script>
+    <link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/main.css" rel="stylesheet">
+    <script src="/webjars/jquery/jquery.min.js"></script>
+    <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+    <script src="/webjars/stomp-websocket/stomp.min.js"></script>
+    <script src="/app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/p5@0.10.2/lib/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.min.js"></script>
+</head>
+<body>
+<noscript><h2 style="color: #ff0000">Seems your browser doesn't support Javascript! Websocket relies on Javascript being
+    enabled. Please enable
+    Javascript and reload this page!</h2></noscript>
+<div class="container" id="main-content">
+    <div class="row">
+        <div class="col-md-6">
+            <form class="form-inline">
+                <div class="form-group">
+                    <label for="name">Enter your Twitch Channel Name:</label>
+                    <input class="form-control" id="name" placeholder="Your Twitch Handle" type="text">
+                </div>
+            </form>
+        </div>
+        <div class="col-md-6">
+            <form class="form-inline">
+                <div class="form-group">
+                    <button class="btn btn-default" id="connect" type="submit">Connect</button>
+                    <button class="btn btn-default" disabled="disabled" id="disconnect" type="submit">Disconnect
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-4">
+            Controls:
+            <ul>
+                <li>Press "S" to spawn a new word.</li>
+            </ul>
+        </div>
+        <div class="col-md-8">
+            Configuration:
+            <div id="slider">Speed:</div>
+        </div>
+    </div>
+</div>
+<script src="/main.js"></script>
+</body>
+</html>
