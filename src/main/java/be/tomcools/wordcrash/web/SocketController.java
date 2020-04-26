@@ -28,7 +28,7 @@ public class SocketController {
     public void handleSessionConnected(SessionConnectEvent event) {
         String channel = SessionEventHelper.extractChannel(event);
         String sessionId = SessionEventHelper.extractSessionId(event);
-        // Save combination of channel and sessionID, this is the only place we'll have both at the same time.
+        // Save combination of channel and sessionID, this is the only place where we'll have both at the same time.
         channelSessionCache.add(channel, sessionId);
         chatBridge.start(channel, chatMessage -> {
             // Whenever a message arrives, send it to /topic/CHANNEL_NAME through STOMP
@@ -44,7 +44,9 @@ public class SocketController {
         channelSessionCache.delete(event.getSessionId());
     }
 
-    /* DEMO push pull
+    /* Not used in this project, but you could also use Spring Messaging annotations to work with STOMP
+    Leaving it in here for reference :-)
+
     @MessageMapping("/hello")
     @SendTo("/topic/greetings")
     public Greeting greeting(SimpMessageHeaderAccessor headerAccessor, HelloMessage message) throws Exception {
@@ -52,11 +54,5 @@ public class SocketController {
         return new Greeting("Hello, " + HtmlUtils.htmlEscape(message.getName()) + "!" + headerAccessor.getSessionId() + ": " + headerAccessor.getSubscriptionId());
     }
     */
-
-  /*@MessageMapping("/fleet/{fleetId}/driver/{driverId}")
-  @SendTo("/topic/game/{fleetId}")
-  public Greeting simple(@DestinationVariable String fleetId, @DestinationVariable String driverId) {
-    return new Simple(fleetId, driverId);
-  }*/
 
 }

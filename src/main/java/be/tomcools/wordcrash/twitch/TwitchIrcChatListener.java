@@ -3,9 +3,7 @@ package be.tomcools.wordcrash.twitch;
 import be.tomcools.wordcrash.domain.ChatMessage;
 import be.tomcools.wordcrash.domain.ChatMessageListener;
 import org.pircbotx.hooks.ListenerAdapter;
-import org.pircbotx.hooks.events.ConnectAttemptFailedEvent;
 import org.pircbotx.hooks.events.ConnectEvent;
-import org.pircbotx.hooks.events.DisconnectEvent;
 import org.pircbotx.hooks.types.GenericMessageEvent;
 
 public class TwitchIrcChatListener extends ListenerAdapter {
@@ -28,19 +26,5 @@ public class TwitchIrcChatListener extends ListenerAdapter {
     public void onConnect(ConnectEvent event) throws Exception {
         super.onConnect(event);
         // Do something on connect
-    }
-
-    @Override
-    public void onConnectAttemptFailed(ConnectAttemptFailedEvent event) throws Exception {
-        super.onConnectAttemptFailed(event);
-
-        // Do something on connection failed
-    }
-
-    @Override
-    public void onDisconnect(DisconnectEvent event) throws Exception {
-        super.onDisconnect(event);
-
-        // Do something on disconnection
     }
 }

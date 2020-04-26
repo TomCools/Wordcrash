@@ -18,6 +18,7 @@ public class ChatBridgeImpl implements ChatBridge {
 
     @Override
     public void start(String channel, ChatMessageListener listener) {
+        // Objectprovider because we always want a new instance.
         IRCChatProvider chat = chatProvider.getObject();
         chat.connect(channel, listener);
 

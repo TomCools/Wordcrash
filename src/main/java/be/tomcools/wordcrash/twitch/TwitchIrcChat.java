@@ -11,7 +11,7 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 
 @Component
-@Scope("prototype")
+@Scope("prototype") // We want a new instance each time.
 public class TwitchIrcChat implements IRCChatProvider {
     private PircBotX bot;
 
@@ -19,7 +19,7 @@ public class TwitchIrcChat implements IRCChatProvider {
     private String authToken;
 
     @Override
-    @Async
+    @Async //PircBotX blocks the thread when it's started. So @Async creates a new thread!
     public void connect(String channel, ChatMessageListener listener) {
         Configuration configuration = new Configuration.Builder()
                 .setAutoNickChange(false) //Twitch doesn't support multiple users
@@ -39,7 +39,7 @@ public class TwitchIrcChat implements IRCChatProvider {
         try {
             bot.startBot();
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("Could not start the bot!", e);
         }
     }
 
