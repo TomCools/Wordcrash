@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 public class TwitchIrcChat implements IRCChatProvider {
     private PircBotX bot;
 
-    @Value("twitch.auth.token")
+    @Value("${twitch.auth.token}")
     private String authToken;
 
     @Override
