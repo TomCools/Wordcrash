@@ -28,6 +28,7 @@ public class SocketController {
     public void handleSessionConnected(SessionConnectEvent event) {
         String channel = SessionEventHelper.extractChannel(event);
         String sessionId = SessionEventHelper.extractSessionId(event);
+
         // Save combination of channel and sessionID, this is the only place where we'll have both at the same time.
         channelSessionCache.add(channel, sessionId);
         chatBridge.start(channel, chatMessage -> {

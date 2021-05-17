@@ -10020,7 +10020,7 @@ function setup() {
     canvas = createCanvas(windowWidth, windowHeight);
     scoreBoard = new Scoreboard(windowWidth - 300, 0);
 
-    spawnNewWord();
+    //spawnNewWord();
 }
 
 function draw() {
