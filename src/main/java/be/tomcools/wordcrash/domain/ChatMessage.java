@@ -1,5 +1,7 @@
 package be.tomcools.wordcrash.domain;
 
+import lombok.Data;
+
 public class ChatMessage {
     private final String user;
     private final String message;
